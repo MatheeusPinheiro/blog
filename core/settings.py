@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django_ckeditor_5",
 
     "blog.apps.BlogConfig",
+    "contato.apps.ContatoConfig",
+    "autenticacao.apps.AutenticacaoConfig",
 ]
 
 MIDDLEWARE = [
