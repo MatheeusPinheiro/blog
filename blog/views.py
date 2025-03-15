@@ -12,3 +12,10 @@ def post_detail(request, pk):
     post = Post.objects.get(pk=pk)
     context = {'post': post}
     return render(request, 'blog/post_detail.html', context)
+
+
+
+def blog(request):
+    posts = Post.objects.order_by('-data_publicacao')
+    context = {'posts':posts}
+    return render(request, 'blog/blog.html', context)

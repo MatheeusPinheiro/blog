@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from .ckeditorconfig import *
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+i(!8h+-$(a!pc9su*r*nu+y@ig4n$r0h2iq(ph_l6&nm^4$t2"
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +45,8 @@ INSTALLED_APPS = [
     "django_ckeditor_5",
 
     "blog.apps.BlogConfig",
+    "contato.apps.ContatoConfig",
+    "autenticacao.apps.AutenticacaoConfig",
 ]
 
 MIDDLEWARE = [
@@ -129,3 +135,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
+#Google config 
+EMAIL_BACKEND = str(os.getenv('EMAIL_BACKEND'))
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
+EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
+DEFAULT_FROM_EMAIL = str(os.getenv('DEFAULT_FROM_EMAIL'))
