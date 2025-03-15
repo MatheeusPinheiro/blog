@@ -27,8 +27,45 @@
     </div>
    </div>
 
+
     <main>
        
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xl-5">
+
+                    <form action="{% url 'processa_contato' %}" method="post">
+                        {% csrf_token %}
+
+                        {% if messages %}
+                            
+                            {% for message in messages %}
+
+                                {% if message.tags %}
+
+                                    <div class="alert alert-success text-center" role="alert">
+                                        {{message}}
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+
+                        {% endif %}
+
+                        {{form}}
+
+                        <div class="d-grid mb-2">
+                            <button class="btn btn-primary" type="submit">
+                                Enviar mensagem
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
       
     </main>
     
