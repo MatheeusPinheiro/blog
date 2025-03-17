@@ -41,16 +41,47 @@
 
                         <div class="col-md-6 p-3 border">
 
-                            <form action="" method="post">
+                            <form action="{% url 'login' %}" method="post">
+
+                                {% csrf_token %}
+
+                                    {% if messages %}
+                                        
+                                    {% for message in messages %}
+
+                                        {% if message.tags %}
+
+                                            <div class="alert alert-danger text-center" role="alert">
+                                                {{message}}
+                                            </div>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                {% endif %}
 
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" placeholder="Digite seu email aqui...">
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="email" 
+                                    placeholder="Digite seu email aqui..."
+                                    name="username"
+                                    value="{{username}}"
+                                    >
                                     <label for="email">Digite aqui seu E-mail</label>
                                 </div>
                                 
                                
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="senha" placeholder="Senha">
+                                    <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="senha" 
+                                    placeholder="Senha"
+                                    name="password"
+                                    >
                                     <label for="senha">Digite aqui sua Senha</label>
                                 </div>
 
@@ -61,7 +92,7 @@
                                 </div>
 
                                 <div class="d-grid mb-2">
-                                    <button class="btn btn-primary" type="button">
+                                    <button class="btn btn-primary" type="submit">
                                         Entrar
                                     </button>
                                 </div>
@@ -80,10 +111,8 @@
                                     </button>
                                 </div>
 
-                                <div class="d-grid">
-                                    <button class="btn" type="button">
-                                       Criar Conta
-                                    </button>
+                                <div class="d-grid text-center">
+                                    <a class="text-decoration-none text-dark" href="{% url 'criar_conta' %}">Criar conta</a>
                                 </div>
         
                             </form>

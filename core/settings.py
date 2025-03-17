@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_ckeditor_5",
+    "widget_tweaks",
 
     "blog.apps.BlogConfig",
     "contato.apps.ContatoConfig",
     "autenticacao.apps.AutenticacaoConfig",
+    "contas.apps.ContasConfig",
 ]
 
 MIDDLEWARE = [

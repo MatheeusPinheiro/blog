@@ -9,6 +9,7 @@ urlpatterns = [
     path("", include('blog.urls')),
     path("contato/", include('contato.urls')),
     path("login/", include('autenticacao.urls')),
+    path("contas/", include('contas.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
