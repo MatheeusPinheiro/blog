@@ -9,7 +9,7 @@ class Post(models.Model):
     subtitulo = models.CharField(max_length=255)
     resumo = models.TextField()
     conteudo = CKEditor5Field(config_name='extends', )
-    imagem_capa = models.ImageField(null = True, blank= True, upload_to='static/blog/')
+    imagem_capa = models.ImageField(null = True, blank= True, upload_to='blog/images')
     data_publicacao = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
