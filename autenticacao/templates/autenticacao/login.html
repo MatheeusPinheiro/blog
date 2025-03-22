@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load socialaccount %}
 <!doctype html>
 <html lang="en">
 
@@ -98,17 +98,19 @@
                                 </div>
 
                                 <div class="d-grid mb-2">
-                                    <button class="btn btn-danger" type="button">
+                                    <a class="btn btn-danger" href="{% provider_login_url 'google'  %}">
                                         <i class="bi bi-google"></i>
                                         Google
-                                    </button>
+                                    </a>
                                 </div>
 
                                 <div class="d-grid mb-2">
-                                    <button class="btn btn-dark" type="button">
+                                    
+                                    <a class="btn btn-dark" href="{% provider_login_url 'github'  %}">
                                         <i class="bi bi-github"></i>
                                         GitHub
-                                    </button>
+                                    </a>
+                                    
                                 </div>
 
                                 <div class="d-grid text-center">

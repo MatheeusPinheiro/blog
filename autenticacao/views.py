@@ -28,5 +28,10 @@ def processa_login(request):
 
 
 def processa_logout(request):
+    # Limpando mensagem do contexto antes do logout
+    storage = messages.get_messages(request)
+    for message in storage:
+        pass
+
     logout(request)
-    return redirect('home')
+    return redirect('login')
