@@ -37,10 +37,29 @@
                     <div class="container  p-5">
 
                         <div class="d-flex flex-column align-items-center border-bottom mb-3">
-                            <img width="150px" height="150px" class="rounded-circle mb-2" src="https://warren.com.br/magazine/wp-content/uploads/2022/02/alan-turing-1024x681.jpg" alt="">
+
+                            {% if user.is_authenticated %}
+
+                                {% if user.socialaccount_set.all.0.get_avatar_url %}
+                                    <img width="150px" height="150px" class="rounded-circle mb-2" 
+                                        src="{{ user.socialaccount_set.all.0.get_avatar_url }}" 
+                                        alt="Avatar">
+                            
+                                {% elif user.perfil.foto %}
+                                    <img width="150px" height="150px" class="rounded-circle mb-2" 
+                                        src="{{ user.perfil.foto.url }}" 
+                                        alt="Avatar">
+                            
+                                {% else %}
+                                    <img width="150px" height="150px" class="rounded-circle mb-2" 
+                                        src="https://warren.com.br/magazine/wp-content/uploads/2022/02/alan-turing-1024x681.jpg" 
+                                        alt="{{ user.username }}">
+                                {% endif %}
+                        
+                            {% endif %}
+                                
                             <span class="text-center mb-2 font-bold">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit dolor praesentium?
-                                Lorem ipsum dolor sit, amet consectetur adipisicin
+                                {{user.perfil.bio}}
                             </span>
                         </div>
 

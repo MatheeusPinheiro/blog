@@ -1,8 +1,9 @@
 from django.forms.models import ModelForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Perfil
 
-class PerfilForm(ModelForm):
+class UserForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,4 +25,16 @@ class PerfilForm(ModelForm):
             'username': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.EmailInput(attrs={'class':'form-control'}),
             'password': forms.PasswordInput(attrs={'class':'form-control'}),
+        }
+
+
+
+class PerfilForm(ModelForm):
+    
+    class Meta:
+        model = Perfil
+        fields = ['bio', 'foto']    
+        widgets = {
+            'bio': forms.Textarea(attrs={'class':'form-control'}),
+            'foto':  forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }

@@ -10,7 +10,7 @@ class Post(models.Model):
     resumo = models.TextField()
     conteudo = CKEditor5Field(config_name='extends', )
     imagem_capa = models.ImageField(null = True, blank= True, upload_to='blog/images')
-    data_publicacao = models.DateTimeField(default=datetime.now())
+    data_publicacao = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return f'{self.autor} - {self.titulo}'
